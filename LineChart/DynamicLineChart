@@ -1,0 +1,36 @@
+import matplotlib.pyplot as plt
+
+plt.ion()  # Turn on interactive mode
+
+x_data = []
+y_data = []
+
+fig, ax = plt.subplots()
+
+i = 0
+
+while True:
+    user_input = input("Enter a number (or 'q' to quit): ")
+
+    if user_input.lower() == 'q':
+        break
+
+    try:
+        value = float(user_input)
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+
+    x_data.append(i)
+    y_data.append(value)
+    i += 1
+
+    ax.clear()
+    ax.plot(x_data, y_data, marker='o')
+    ax.set_title("Dynamic Line Chart (User Input)")
+    ax.set_xlabel("Entry Number")
+    ax.set_ylabel("Value")
+    plt.pause(0.1)
+
+plt.ioff()
+plt.show()

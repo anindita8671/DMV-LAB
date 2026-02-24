@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import numpy as np
+
+# Create figure and axis
+fig, ax = plt.subplots()
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 10)
+
+# Initial empty scatter
+scat = ax.scatter([], [])
+
+def update(frame):
+    # Generate 10 random points
+    x = np.random.rand(10) * 10
+    y = np.random.rand(10) * 10
+    colors = np.random.rand(10)
+    sizes = 100 * np.random.rand(10)
+
+    ax.clear()
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+    ax.set_title("Dynamic Scatter Plot")
+    ax.set_xlabel("X Axis")
+    ax.set_ylabel("Y Axis")
+    
+    ax.scatter(x, y, c=colors, s=sizes, alpha=0.6, cmap='viridis')
+
+ani = animation.FuncAnimation(fig, update, interval=1000)
+
+plt.show()
